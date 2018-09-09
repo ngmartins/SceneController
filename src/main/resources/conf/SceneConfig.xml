@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<SceneControllerConfiguration>
+
+
+    <Scene Id = "55">
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>22</DeviceId>
+            <DeviceTargetState>on</DeviceTargetState>
+        </Action>
+
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>23</DeviceId>
+            <DeviceTargetState>on</DeviceTargetState>
+        </Action>
+
+        <Action type = "Sleep">
+            <TimeInSeconds>5</TimeInSeconds>
+        </Action>
+
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>26</DeviceId>
+            <DeviceTargetState>on</DeviceTargetState>
+        </Action>
+
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>23</DeviceId>
+            <DeviceTargetState>off</DeviceTargetState>
+        </Action>
+
+        <Action type ="CallScene">
+            <Id>33</Id>
+        </Action>
+
+    </Scene>
+
+
+    <Scene Id = "33">
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>12</DeviceId>
+            <DeviceTargetState>on</DeviceTargetState>
+        </Action>
+
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>13</DeviceId>
+            <DeviceTargetState>on</DeviceTargetState>
+        </Action>
+
+        <Action type = "Sleep">
+            <TimeInSeconds>3</TimeInSeconds>
+        </Action>
+
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>16</DeviceId>
+            <DeviceTargetState>on</DeviceTargetState>
+        </Action>
+
+        <Action type ="CallScene">
+            <Id>3</Id>
+        </Action>
+
+        <Action type ="DeviceInteraction">
+            <DeviceType>lights</DeviceType>
+            <DeviceId>13</DeviceId>
+            <DeviceTargetState>off</DeviceTargetState>
+        </Action>
+
+
+
+    </Scene>
+
+</SceneControllerConfiguration>
