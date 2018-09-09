@@ -33,10 +33,10 @@ public class ServerSceneManager {
                 e.printStackTrace();
                 return "ERROR: Running scene " + id;
             }
-            return "Running scene " + id;
+            return "Scene " + id + " ran successfully";
         }else{
             //needs to be printed for verification of callScene action
-            String msg = "# ERROR: Scene " + id + " does not exist!";
+            String msg = "#" + '\t' +"ERROR: Scene " + id + " does not exist!";
             System.out.println(msg);
             return msg;
         }
@@ -48,10 +48,10 @@ public class ServerSceneManager {
     It will exposes an endpoint to all device interactions
     POST eg: http://localhost:8080/service1.local/ligths/22/on
      */
-    @RequestMapping(value="//service1.local/{type}/{id}/{state}")
+    @RequestMapping(value="//service{i}.local/{type}/{id}/{state}")
     @ResponseBody
-    public String deviceReceptor(@PathVariable("type") String type, @PathVariable("id") int id, @PathVariable("state") String state) throws ParseException {
-        String ret = "# The state of device " + type+ " " + id + " was changed to " + state;
+    public String deviceReceptor(@PathVariable("i") int i,@PathVariable("type") String type, @PathVariable("id") int id, @PathVariable("state") String state) throws ParseException {
+        String ret = "#" + '\t' + "The state of device " + type+ " " + id + " was changed to " + state;
         System.out.println(ret);
         return ret;
     }

@@ -34,15 +34,15 @@ public class SceneControllerParserTest extends TestCase {
     @Test
     public void testNumberOfScenes() {
         sceneMap = buildSceneMap();
-        assertEquals(6,sceneMap.get(55).size());
-        assertEquals(5,sceneMap.get(33).size());
+        assertEquals(2,sceneMap.size());
+
     }
 
     @Test
     public void testNumberOfActionsPerScenes(){
         sceneMap = buildSceneMap();
         assertEquals(6,sceneMap.get(new Integer(55)).size());
-        assertEquals(5,sceneMap.get(new Integer(33)).size());
+        assertEquals(6,sceneMap.get(new Integer(33)).size());
     }
 
     @Test
@@ -70,6 +70,7 @@ public class SceneControllerParserTest extends TestCase {
         testerScene33.add(new ActionDeviceInteraction(13,"lights","on"));
         testerScene33.add(new ActionSleepSeconds(3));
         testerScene33.add(new ActionDeviceInteraction(16,"lights","on"));
+        testerScene33.add(new ActionCallScene(3));
         testerScene33.add(new ActionDeviceInteraction(13,"lights","off"));
 
         assertEquals(testerScene33,sceneActions);

@@ -41,14 +41,14 @@ public class ActionDeviceInteraction implements SceneSingleAction {
         try {
             System.out.println("# Switch state of " + deviceType + " " + deviceID + " to " + deviceAction);
             URL url = new URL("http://localhost:8080/service1.local/" + deviceType + '/' + deviceID + '/' + deviceAction);
-            System.out.println("# POST: " + url);
+            System.out.println("#" + '\t' +"POST: " + url);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.getResponseCode();
             con.disconnect();
 
         } catch (Exception e) {
-            System.out.println("ERROR: in switching the state of " + deviceType + " " + deviceID + " to " + deviceAction );
+            System.out.println("#" + '\t' +"ERROR: in switching the state of " + deviceType + " " + deviceID + " to " + deviceAction );
             e.printStackTrace();
             throw new Exception();
 

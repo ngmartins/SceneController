@@ -24,8 +24,8 @@ public class SceneControllerParser {
     public static final String ACTION = "Action";
     public static final String TYPE = "type";
 
-
-    Map<Integer, List<SceneSingleAction>> sceneMap;
+    //just only one instance is allowed here
+    private static Map<Integer, List<SceneSingleAction>> sceneMap;
 
     public SceneControllerParser() {
         this.sceneMap =  new HashMap<>();
@@ -36,6 +36,9 @@ public class SceneControllerParser {
         return sceneMap;
     }
 
+    /*
+    Parse the XML config File and generate a scene map
+     */
     public void parseConfigFile(String file) throws ParserConfigurationException, IOException, SAXException {
 
         File inputFile = new File(file);
@@ -90,11 +93,8 @@ public class SceneControllerParser {
                         actionsOfScene.add(deviceInteraction);
                         //System.out.println("\t\t" + deviceType +"_"+deviceId+"_"+deviceTargetState);
                         break;
-
                 }
-
             }
-
             sceneMap.put(Integer.valueOf(sceneId),actionsOfScene);
         }
 

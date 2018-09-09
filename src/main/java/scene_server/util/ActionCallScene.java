@@ -42,7 +42,7 @@ public class ActionCallScene implements SceneSingleAction {
             con.disconnect();
 
         } catch (Exception e) {
-            System.out.println("ERROR: on Calling scene "+ sceneToCall );
+            System.out.println("#" + '\t' +"ERROR: on Calling scene "+ sceneToCall );
             e.printStackTrace();
             throw new Exception();
 
