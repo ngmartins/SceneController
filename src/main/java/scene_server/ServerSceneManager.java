@@ -1,28 +1,34 @@
 package scene_server;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.web.bind.annotation.*;
 import scene_server.util.SceneControllerParser;
 import scene_server.util.SceneSingleAction;
 
-import java.io.File;
+import java.io.*;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
+import static scene_server.util.fileUtil.getFileFromIS;
+
 @RestController
 public class ServerSceneManager {
 
-    //private static final String CONF_FILE = "SceneConfig.xml";
     private static final String CONF_FILE = "conf/SceneConfig.xml";
 
-    private static final ClassLoader classLoader = ServerSceneManager.class.getClassLoader();
-    private static final File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
+    //static ClassLoader classLoader = ServerSceneManager.class.getClassLoader();
+    //static File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
 
-
+    private InputStream is = getClass().getClassLoader().getResourceAsStream(CONF_FILE);
+    private File confFile = getFileFromIS(is);
 
     private static SceneControllerParser sceneParser = new SceneControllerParser();
     private static Map<Integer, List<SceneSingleAction>> sceneMap;
     private static SceneRunner sceneRunner = new SceneRunner();
+
+    public ServerSceneManager() throws IOException {
+    }
 
     /*
     This method exposes an endpoint to all scenes and execute their actions
@@ -69,7 +75,7 @@ public class ServerSceneManager {
     /*
     If the conf file was not parsed, them parse it and build a scene map
      */
-    private static void sceneMapChecking() throws ParseException {
+    private void sceneMapChecking() throws ParseException {
 
             if (sceneMap==null){
                 try {
