@@ -16,7 +16,7 @@ public class ServerSceneManager {
     private static Map<Integer, List<SceneSingleAction>> sceneMap;
     private static SceneRunner sceneRunner = new SceneRunner();
 
-
+    //This method exposes an endpoint to all scenes and execute their actions
     @RequestMapping(value="/scene/{id}")
     @ResponseBody
     public String runScene(@PathVariable("id") int id) throws ParseException {
@@ -40,7 +40,10 @@ public class ServerSceneManager {
         }
     }
 
-    //THIS IS JUST A TEST METHOD.
+    //THIS METHOD IS JUST FOR TESTING PURPOSES
+    //It will exposes an endpoint to all device interactions
+    //POST eg: http://localhost:8080/service1.local/ligths/22/on
+    //#################################################################################################################
     @RequestMapping(value="//service1.local/{type}/{id}/{state}")
     @ResponseBody
     public String deviceReceptor(@PathVariable("type") String type, @PathVariable("id") int id, @PathVariable("state") String state) throws ParseException {
@@ -48,9 +51,10 @@ public class ServerSceneManager {
         System.out.println(ret);
         return ret;
     }
+    //#################################################################################################################
 
 
-    private void sceneMapChecking() throws ParseException {
+    private static void sceneMapChecking() throws ParseException {
 
             if (sceneMap==null){
                 try {

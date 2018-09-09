@@ -35,7 +35,8 @@ public class ActionSleepSeconds implements SceneSingleAction {
         System.out.println("# Sleep " + secondsToSleep + " seconds");
 
         try {
-            Thread.sleep(secondsToSleep*1000);
+            long t =secondsToSleep*1000;
+            Thread.sleep(t);
         } catch (InterruptedException e) {
             System.out.println("ERROR: on sleeping action (" + secondsToSleep +" seconds)");
             e.printStackTrace();
