@@ -71,7 +71,6 @@ public class ServerSceneManager {
                     e.printStackTrace();
                     throw new ParseException("ERROR: Fail to parse configuration file", 0);
                 }
-
         }
     }
 
