@@ -61,11 +61,17 @@
             <DeviceTargetState>on</DeviceTargetState>
         </Action>
 
+        <Action type ="CallScene">
+            <Id>3</Id>
+        </Action>
+
         <Action type ="DeviceInteraction">
             <DeviceType>lights</DeviceType>
             <DeviceId>13</DeviceId>
             <DeviceTargetState>off</DeviceTargetState>
         </Action>
+
+
 
     </Scene>
 

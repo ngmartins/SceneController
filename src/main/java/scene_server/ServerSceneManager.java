@@ -24,9 +24,7 @@ public class ServerSceneManager {
         //if config file not parsed yet, then parseit
         sceneMapChecking();
 
-
         if (sceneMap.containsKey(id)){
-
             try {
                 sceneRunner.runScene(id, sceneMap.get(id));
             } catch (Exception e) {
@@ -35,9 +33,20 @@ public class ServerSceneManager {
             }
             return "Running scene " + id;
         }else{
-            return "Scene " + id + " does not exist!";
+            //needs to be printed for verification of callScene action
+            String msg = "# ERROR: Scene " + id + " does not exist!";
+            System.out.println(msg);
+            return msg;
         }
+    }
 
+    //THIS IS JUST A TEST METHOD.
+    @RequestMapping(value="//service1.local/{type}/{id}/{state}")
+    @ResponseBody
+    public String deviceReceptor(@PathVariable("type") String type, @PathVariable("id") int id, @PathVariable("state") String state) throws ParseException {
+        String ret = "# The state of device " + type+ " " + id + " was changed to " + state;
+        System.out.println(ret);
+        return ret;
     }
 
 
@@ -46,14 +55,12 @@ public class ServerSceneManager {
             if (sceneMap==null){
                 try {
                     sceneParser.parseConfigFile(CONF_FILE);
+                    sceneMap =  sceneParser.getSceneMap();
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw new ParseException("ERROR: Fail to parse configuration file", 0);
                 }
-                sceneMap =  sceneParser.getSceneMap();
 
-        }else {
-            System.out.println("PARSED");
         }
     }
 

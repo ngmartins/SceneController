@@ -1,5 +1,7 @@
 package scene_server.util;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Objects;
 
 public class ActionCallScene implements SceneSingleAction {
@@ -28,7 +30,22 @@ public class ActionCallScene implements SceneSingleAction {
 
 
     @Override
-    public void run() {
+    public void run() throws Exception {
         System.out.println("# Call the scene " + sceneToCall);
+
+
+        try {
+            URL url = new URL("http://localhost:8080/scene/" + sceneToCall);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.getResponseCode();
+            con.disconnect();
+
+        } catch (Exception e) {
+            System.out.println("ERROR: on Calling scene "+ sceneToCall );
+            e.printStackTrace();
+            throw new Exception();
+
+        }
     }
 }
