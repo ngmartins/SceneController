@@ -39,12 +39,11 @@ public class SceneControllerParser {
     /*
     Parse the XML config File and generate a scene map
      */
-    public void parseConfigFile(String file) throws ParserConfigurationException, IOException, SAXException {
+    public void parseConfigFile(File confFile) throws ParserConfigurationException, IOException, SAXException {
 
-        File inputFile = new File(file);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(inputFile);
+        Document doc = dBuilder.parse(confFile);
         doc.getDocumentElement().normalize();
 
         NodeList nList = doc.getElementsByTagName(XML_ELEMENT_NAME);

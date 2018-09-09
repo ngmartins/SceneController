@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import scene_server.util.SceneControllerParser;
 import scene_server.util.SceneSingleAction;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,14 @@ import java.util.Map;
 @RestController
 public class ServerSceneManager {
 
-    private static final String CONF_FILE = "SceneConfig.xml";
+    //private static final String CONF_FILE = "SceneConfig.xml";
+    private static final String CONF_FILE = "conf/SceneConfig.xml";
+
+    private static final ClassLoader classLoader = ServerSceneManager.class.getClassLoader();
+    private static final File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
+
+
+
     private static SceneControllerParser sceneParser = new SceneControllerParser();
     private static Map<Integer, List<SceneSingleAction>> sceneMap;
     private static SceneRunner sceneRunner = new SceneRunner();
@@ -65,12 +73,13 @@ public class ServerSceneManager {
 
             if (sceneMap==null){
                 try {
-                    sceneParser.parseConfigFile(CONF_FILE);
+                    sceneParser.parseConfigFile(confFile);
                     sceneMap =  sceneParser.getSceneMap();
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw new ParseException("ERROR: Fail to parse configuration file", 0);
                 }
+
         }
     }
 

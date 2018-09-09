@@ -3,6 +3,7 @@ package scene_server.util;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,10 @@ import java.util.Map;
 public class SceneControllerParserTest extends TestCase {
 
 
-    private static final String CONF_FILE = "SceneConfig.xml";
+    private static final String CONF_FILE = "conf/SceneConfig.xml";
+
+    ClassLoader classLoader = getClass().getClassLoader();
+    File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
 
     private static Map<Integer, List<SceneSingleAction>> sceneMap;
 
@@ -18,7 +22,7 @@ public class SceneControllerParserTest extends TestCase {
     private Map<Integer, List<SceneSingleAction>> buildSceneMap() {
         SceneControllerParser sceneParser = new SceneControllerParser();
         try {
-            sceneParser.parseConfigFile(CONF_FILE);
+            sceneParser.parseConfigFile(confFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
