@@ -4,19 +4,30 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import static scene_server.util.fileUtil.getFileFromIS;
 
 public class SceneControllerParserTest extends TestCase {
 
 
     private static final String CONF_FILE = "conf/SceneConfig.xml";
 
-    ClassLoader classLoader = getClass().getClassLoader();
-    File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
+    //ClassLoader classLoader = getClass().getClassLoader();
+    //File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
+
+    private InputStream is = getClass().getClassLoader().getResourceAsStream(CONF_FILE);
+    private File confFile = getFileFromIS(is);
+
 
     private static Map<Integer, List<SceneSingleAction>> sceneMap;
+
+    public SceneControllerParserTest() throws IOException {
+    }
 
 
     private Map<Integer, List<SceneSingleAction>> buildSceneMap() {
