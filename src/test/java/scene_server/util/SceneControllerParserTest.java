@@ -20,10 +20,10 @@ public class SceneControllerParserTest extends TestCase {
     //ClassLoader classLoader = getClass().getClassLoader();
     //File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
 
-    private InputStream is = getClass().getClassLoader().getResourceAsStream(CONF_FILE);
-    private File confFile = getFileFromIS(is);
+    //private InputStream is = getClass().getClassLoader().getResourceAsStream(CONF_FILE);
+   // private File confFile = getFileFromIS(is);
 
-
+    static File confFile = new File(CONF_FILE);
     private static Map<Integer, List<SceneSingleAction>> sceneMap;
 
     public SceneControllerParserTest() throws IOException {

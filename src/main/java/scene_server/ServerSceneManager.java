@@ -19,9 +19,10 @@ public class ServerSceneManager {
 
     //static ClassLoader classLoader = ServerSceneManager.class.getClassLoader();
     //static File confFile = new File(classLoader.getResource(CONF_FILE).getFile());
+    static File confFile = new File(CONF_FILE);
 
-    private InputStream is = getClass().getClassLoader().getResourceAsStream(CONF_FILE);
-    private File confFile = getFileFromIS(is);
+    //private InputStream is = getClass().getClassLoader().getResourceAsStream(CONF_FILE);
+    //private File confFile = getFileFromIS(is);
 
     private static SceneControllerParser sceneParser = new SceneControllerParser();
     private static Map<Integer, List<SceneSingleAction>> sceneMap;
